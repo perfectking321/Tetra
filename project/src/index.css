@@ -1,0 +1,68 @@
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  .dark {
+    color-scheme: dark;
+  }
+
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Satoshi', system-ui, -apple-system, sans-serif;
+    @apply bg-neutral-50 text-neutral-900 dark:bg-neutral-900 dark:text-neutral-50;
+    background-image: var(--dot-pattern);
+    background-size: 24px 24px;
+  }
+
+  .dark body {
+    --dot-pattern: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+  }
+
+  body {
+    --dot-pattern: radial-gradient(circle, rgba(0,0,0,0.03) 1px, transparent 1px);
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-neutral-200 dark:bg-neutral-700 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-neutral-300 dark:bg-neutral-600;
+  }
+}
+
+/* Glass effect */
+.glass-effect {
+  @apply bg-white/80 dark:bg-neutral-800/80 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-700/50;
+}
+
+/* For vis.js network */
+.vis-network:focus {
+  outline: none;
+}
+
+.node-tooltip {
+  @apply glass-effect p-2 rounded-lg text-sm shadow-lg;
+}
